@@ -37,6 +37,8 @@ typedef struct instruction_s
 #include <unistd.h>
 #include <stdarg.h>
 
-void printing_errors(int error_code, ...);
+void push_to_stack(stack_t **head, int n);
+void print_stack(stack_t **head, unsigned int count);
+void pint_func(stack_t **head, unsigned int count);
 
 #endif
