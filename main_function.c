@@ -2,51 +2,46 @@
 
 /**
   * push_to_stack - function add node to stack
-  * @new_node: pointer to the new node
-  * @line: line number of opcode
+  * @head: head of the sack
+  * @n: value
   *
   */
 
-void push_to_stack(stack_t **new_node, __attribute__((unused))unsigned int line)
+void push_to_stack(stack_t **head, int n)
 {
-	stack_t *temp;
+	stack_t *temp, new_node;
 
-	if (new_node == NULL || *new_node == NULL)
-		exit(EXIT_FAILURE);
-	if (top == NULL)
+	temp = *head;
+	new_node = malloc(sizeof(stack_t));
+	if (new_node == NULL)
 	{
-		top == *new_node;
-		return;
+		printf("Error\n");
+		exit(0);
 	}
-	else
-	{
-		temp = top;
-		temp = *new_node;
-		top->next = temp;
-		temp->prev = top;
-	}
+	if (temp)
+		temp->prev = new_node;
+	new_node->n = n;
+	new_node->next = *head;
+	new_node->prev = NULL;
+	*head = new_node;
 }
-
 /**
   * print_stack - prints all the values on the stack
-  * @stack: pointer to the stack
-  * @line: line number of the opcode
+  * @head: head of the stack
+  * @count: void parmeter
   */
 
-void print_stack(stack_t **stack, unsigned int line)
+void print_stack(stack_t **head, unsigned int count)
 {
 	stack_t *temp;
+	(void)count;
 
-	(void)line_number;
-	if (stack == NULL)
-		exit(EXIT_FAILURE);
-	else
-	{
-		temp = *stack;
-		while (temp != NULL)
+	temp = *head;
+	if (temp == NULL)
+		return;
+		while (temp)
 		{
 			printf("%d\n", temp->n);
 			temp = temp->next;
 		}
-	}
 }
