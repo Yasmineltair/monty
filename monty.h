@@ -38,9 +38,9 @@ typedef struct instruction_s
 #include <sys/types.h>
 
 void push_func(stack_t **head, int n);
-void print_stack(stack_t **head, unsigned int line_number);
+void print_func(stack_t **head, unsigned int line_number);
 void pint_func(stack_t **head, unsigned int line_number);
-void free_stack(stack_t *head);
+void free_nodes(void);
 void swap_func(stack_t **head, unsigned int line_number);
 void execute(char *opcode, char *value, int line_number, int format);
 void open_file(char *file);
