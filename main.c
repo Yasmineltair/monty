@@ -4,7 +4,7 @@
   * main - main function
   * @argc: number of argumnet
   * @argv: values of argument
-  * Return 0 in success
+  * Return: 0 in success
   */
 
 int main(int argc, char *argv[])
@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 		read_line = getline(&line, &line_len, file);
 		line_number++;
 		if (read_line > 0)
-			execute(line,&stack, line_number, file);
+			execute(line, &stack, line_number, file);
 		free(line);
 	}
 	free_stack;

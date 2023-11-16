@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
-  * free_nodes - function that free stack
+  * free_stack - function that free stack
   * @head: header of the stack
   */
 
