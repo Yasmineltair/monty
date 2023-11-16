@@ -28,13 +28,13 @@ void push_to_stack(stack_t **head, int n)
 /**
   * print_stack - prints all the values on the stack
   * @head: head of the stack
-  * @count: void parmeter
+  * @line_number: void parmeter
   */
 
-void print_stack(stack_t **head, unsigned int count)
+void print_stack(stack_t **head, unsigned int line_number)
 {
 	stack_t *temp;
-	(void)count;
+	(void)line_number;
 
 	temp = *head;
 	if (temp == NULL)

@@ -36,9 +36,11 @@ typedef struct instruction_s
 #include <string.h>
 #include <unistd.h>
 #include <stdarg.h>
+#include <sys/types.h>
 
 void push_to_stack(stack_t **head, int n);
-void print_stack(stack_t **head, unsigned int count);
-void pint_func(stack_t **head, unsigned int count);
+void print_stack(stack_t **head, unsigned int line_number);
+void pint_func(stack_t **head, unsigned int line_number);
+void free_stack(stack_t *head);
 
 #endif
