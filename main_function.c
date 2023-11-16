@@ -7,7 +7,7 @@
   *
   */
 
-void push_to_stack(stack_t **head, int n)
+void push_func(stack_t **head, int n)
 {
 	stack_t *temp, *new_node;
 
@@ -26,7 +26,7 @@ void push_to_stack(stack_t **head, int n)
 	*head = new_node;
 }
 /**
-  * print_stack - prints all the values on the stack
+  * print_func - prints all the values on the stack
   * @head: head of the stack
   * @line_number: void parmeter
   */

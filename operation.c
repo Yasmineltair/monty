@@ -1,45 +1,35 @@
 #include "monty.h"
 /**
   * execute - execute thr opcode
-  * @stack: linked list
+  * @opcode: opcode
+  * @value: argument of opcode
   * @line_number: line number
-  * @line: line
-  * @file: file monty
-  * Return: 0
+  * @format: 0/1
   */
-int execute(char *line, stack_t **stack, unsigned int line_number, FILE *file)
+void execute(char *opcode, char *value, int line_number, int format)
 {
+	int i;
+	int ffff;
 instruction_t op_list[] = {
-	{"push", push_to_stack},
-	{"pall", print_stack},
+	{"push", push_func},
+	{"pall", print_func},
 	{"pint", pint_func},
-	{"swap", swap_func};
+	{"swap", swap_func},
 	{NULL, NULL}
 };
-unsigned int i;
-char *operation;
-char *value;
-
-operation = strtok(line, " \n\t");
-if (operation && operation[0] == '#')
-return (0);
-value = strtok(NULL, " \n\t");
-while (op_list[i].opcode && operation)
+if (opcode[0] == '#')
+return;
+for (ffff = 1, i = 0; op_list[i].opcode != NULL; i++)
 {
-	if (strcmp(operation, op_list[i].opcode) == 0)
+	if (strcmp(opcode, op_list[i].opcode) == 0)
 	{
-		op_list[i].f(stack, line_number);
-		return (0);
+		bring_func(op_list[i].f, opcode, value, line_number, format)
+			ffff = 0;
 	}
-	i++;
 }
-if (operation && op_list[i].opcode == NULL)
-{
-	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, operation);
-fclose(file);
-free(line);
-free_stack(*stack);
-exit(EXIT_FAILURE);
-}
-return (1);
+if (ffff == 1)
+	{
+		fprintf(stderr, "L%d: unknown instruction %s\n", opcode);
+		exit(EXIT_FAILURE);
+	}
 }

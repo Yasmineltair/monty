@@ -9,34 +9,85 @@
 
 int main(int argc, char *argv[])
 {
-	FILE *file;
-	ssize_t read_line = 1;
-	char *line;
-	size_t line_len = 0;
-	stack_t *stack = NULL;
-	unsigned int line_number;
-
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	file = fopen(argv[1], "r");
-	if (!file)
+	open_file(argv[1]);
+	free_nodes();
+	return (0);
+}
+
+/**
+  * open_file - function to open monty file
+  * @file: file name
+  */
+
+void open_file(char *file)
+{
+	FILE *fd = fopen(file, "r");
+
+	if (file == NULL || fd == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", file);
 		exit(EXIT_FAILURE);
 	}
-	while (read_line > 0)
+	read_file(fd);
+	fclose(fd);
+}
+
+/**
+  * read_file - function read files
+  * @fd: pointer to file descriptor
+  */
+
+void read_file(FILE *fd)
+{
+	int line_number, format = 0;
+	char *line = NULL;
+	size_t length = 0;
+
+	for (line_number = 1; getline(&line, &length, fd) != -1; line_number++)
 	{
-		line = NULL;
-		read_line = getline(&line, &line_len, file);
-		line_number++;
-		if (read_line > 0)
-			execute(line, &stack, line_number, file);
-		free(line);
+		format = token_line(line, line_number, format);
 	}
-	free_stack(stack);
-	fclose(file);
-return (0);
+	free(line);
+}
+
+/**
+  * token_line - function to separate line into tokens
+  * @line: line
+  * @line_number: line number
+  * @format: storage format(0:stack, 1:queue)
+  * Return:0 if stack and 1 if queue
+  */
+
+int line_token(char *line, int line_number, int format)
+{
+char *opcode, *value;
+char *delim = "\n ";
+
+if (line == NULL)
+{
+	fprintf(stderr, "Error: malloc failed\n");
+	exit(EXIT_FAILURE);
+}
+opcode = strtok(line, delim);
+if (opcode == NULL)
+{
+	return (format);
+}
+value = strtok(NULL, delim);
+
+if (strcmp(opcode, "stack") == 0)
+{
+	return (0);
+}
+if (strcmp(opcode, "queue") == 0)
+{
+	return (1);
+}
+execute(opcode, value, line_number, format);
+return (format);
 }
