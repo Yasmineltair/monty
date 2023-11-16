@@ -9,7 +9,7 @@
 
 void push_to_stack(stack_t **head, int n)
 {
-	stack_t *temp, new_node;
+	stack_t *temp, *new_node;
 
 	temp = *head;
 	new_node = malloc(sizeof(stack_t));
@@ -38,8 +38,10 @@ void print_stack(stack_t **head, unsigned int line_number)
 
 	temp = *head;
 	if (temp == NULL)
+	{
 		return;
-		while (temp)
+	}
+	while (temp)
 		{
 			printf("%d\n", temp->n);
 			temp = temp->next;
