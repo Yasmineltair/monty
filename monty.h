@@ -39,11 +39,11 @@ typedef struct instruction_s
 #include <unistd.h>
 #include <ctype.h>
 
-extern stack_t *head;
 void free_stack(stack_t *head);
 int exec(char *line, stack_t **stack,unsigned int line_number, FILE *file);
 void pall_func(stack_t **head, unsigned int line_number);
 void push_func(stack_t **head, unsigned int n);
 void pint_func(stack_t **head, unsigned int line_number);
+void pop_func(stack_t **head, unsigned int line_number);
 
 #endif
