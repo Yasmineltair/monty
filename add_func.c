@@ -12,7 +12,7 @@ void add_func(stack_t **head, unsigned int line_number)
 	int length, aux;
 
 	temp = *head;
-	while(temp)
+	while (temp)
 	{
 		temp = temp->next;
 		length++;
