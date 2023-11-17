@@ -11,10 +11,10 @@ int main(int argc, char *argv[])
 {
 	FILE *file;
 	ssize_t r_line = 1;
-	char *value;
 	size_t length = 0;
 	unsigned int line_number;
 	stack_t *stack = NULL;
+	char *line;
 
 
 	if (argc != 2)
@@ -30,11 +30,10 @@ int main(int argc, char *argv[])
 	}
 	while (r_line > 0)
 	{
-		value = NULL;
 		r_line = getline(&line, &length, file);
 		line_number++;
 		if (r_line > 0)
-			ex(line, &stack, line_number, file)
+			exec(line, &stack, line_number, file);
 		free(line);
 	}
 	free_stack(stack);

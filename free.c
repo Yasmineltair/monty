@@ -14,12 +14,12 @@ void free_stack(stack_t *head)
 	{
 		temp = head->next;
 		free(head);
-		head = temp
+		head = temp;
 	}
 }
 
 /**
-  * ex - execute opcode
+  * exec - execute opcode
   * @line: line content
   * @stack: stack linked list
   * @line_number: line_number
@@ -27,7 +27,7 @@ void free_stack(stack_t *head)
   * Return: 0 / 1
   */
 
-int ex(char *line, stack_t **stack, unsigned int line_number, FILE *file)
+int exec(char *line, stack_t **stack, unsigned int line_number, FILE *file)
 {
 	instruction_t op_list[] = {
 		{"push", push_func},
@@ -40,7 +40,7 @@ int ex(char *line, stack_t **stack, unsigned int line_number, FILE *file)
 	opcode = strtok(line, " \n\t");
 	if (opcode && opcode[0] == '#')
 		return (0);
-	value = strtok(NULL, " \n\t");
+	opcode = strtok(NULL, " \n\t");
 	while (op_list[i].opcode && opcode)
 	{
 		if (strcmp(opcode, op_list[i].opcode) == 0)

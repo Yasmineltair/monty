@@ -40,15 +40,9 @@ typedef struct instruction_s
 #include <ctype.h>
 
 extern stack_t *head;
-void push_func(stack_t **head, int n);
-void print_func(stack_t **head, unsigned int line_number);
-void pint_func(stack_t **head, unsigned int line_number);
-void free_nodes(void);
-void swap_func(stack_t **head, unsigned int line_number);
-void execute(char *opcode, char *value, int line_number, int format);
-void open_file(char *file);
-void read_file(FILE *fd);
-int line_token(char *line, int line_number, int format);
-
+void free_stack(stack_t *head);
+int exec(char *line, stack_t **stack,unsigned int line_number, FILE *file);
+void pall_func(stack_t **head, unsigned int line_number);
+void push_func(stack_t **head, unsigned int n);
 
 #endif
