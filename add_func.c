@@ -25,7 +25,7 @@ void add_func(stack_t **head, unsigned int line_number)
 	}
 	temp = *head;
 	aux = temp->n + temp->next->n;
-	temp->next->n = temp;
+	temp->next->n = aux;
 	*head = temp->next;
 	free(temp);
 }

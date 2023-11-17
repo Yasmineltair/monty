@@ -15,7 +15,7 @@ temp = *head;
 while (temp)
 {
 	temp = temp->next;
-	length++
+	length++;
 }
 if (length < 2)
 {
@@ -26,7 +26,7 @@ if (length < 2)
 temp = *head;
 aux = temp->n;
 temp->n = temp->next->n;
-temp->next->n = temp;
+temp->next->n = aux;
 }
 
-}
+
