@@ -32,6 +32,7 @@ int exec(char *line, stack_t **stack, unsigned int line_number, FILE *file)
 	instruction_t op_list[] = {
 		{"push", push_func},
 		{"pall", pall_func},
+		{"pint", pint_func},
 		{NULL, NULL}
 	};
 	unsigned int i = 0;
