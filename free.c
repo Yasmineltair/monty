@@ -40,24 +40,24 @@ int exec(char *line, stack_t **stack, unsigned int line_number, FILE *file)
 		{NULL, NULL}
 	};
 	unsigned int i = 0;
-	char *opcode;
+	char *opcd;
 
-	opcode = strtok(line, " \n\t");
-	if (opcode && opcode[0] == '#')
+	opcd = strtok(line, " \n\t");
+	if (opcd && opcd[0] == '#')
 		return (0);
-	opcode = strtok(NULL, " \n\t");
-	while (op_list[i].opcode && opcode)
+	info.argument = strtok(NULL, " \n\t");
+	while (op_list[i].opcode && opcd)
 	{
-		if (strcmp(opcode, op_list[i].opcode) == 0)
+		if (strcmp(opcd, op_list[i].opcode) == 0)
 		{
 			op_list[i].f(stack, line_number);
 			return (0);
 		}
 		i++;
 	}
-	if (opcode && op_list[i].opcode == NULL)
+	if (opcd && op_list[i].opcode == NULL)
 	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcd);
 		fclose(file);
 		free(line);
 		free_stack(*stack);
