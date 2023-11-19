@@ -45,6 +45,7 @@ typedef struct info_s
 {
 	char *line;
 	char *argument;
+	int lifi;
 } info_t;
 
 extern info_t info;
@@ -62,11 +63,12 @@ extern info_t info;
 void free_stack(stack_t *head);
 int exec(char *line, stack_t **stack,unsigned int line_number, FILE *file);
 void pall_func(stack_t **head, unsigned int line_number);
-void push_func(stack_t **head, unsigned int n);
+void push_func(stack_t **head, unsigned int line_number);
 void pint_func(stack_t **head, unsigned int line_number);
 void pop_func(stack_t **head, unsigned int line_number);
 void add_func(stack_t **head, unsigned int line_number);
 void swap_func(stack_t **head, unsigned int line_number);
 void nop_func(stack_t **head, unsigned int line_number);
-
+void add_queue(stack_t **h, int n);
+void add_node(stack_t **head, int n);
 #endif

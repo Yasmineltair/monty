@@ -3,24 +3,43 @@
 /**
   * push_func - push node to stack
   * @head: header
-  * @n: value of node
+  * @line_number: line number
   */
 
-void push_func(stack_t **head, unsigned int n)
+void push_func(stack_t **head, unsigned int line_number)
 {
-	stack_t *new_node, *aux;
+	int i;
+	int j = 0;
+	int ffff = 0;
 
-	aux = *head;
-	new_node = malloc(sizeof(stack_t));
-	if (new_node == NULL)
+	if (info.argument)
 	{
-		printf("Error\n");
-		exit(0);
+		if (info.argument[0] == '-')
+			j++;
+		for (; info.argument[j] != '\0'; j++)
+		{
+			if (info.argument[j] > 57 || info.argument[j] < 48)
+				ffff = 1;
+		}
+		if (ffff == 1)
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+					free(info.line);
+					free_stack(*head);
+					exit(EXIT_FAILURE);
+					}
+					}
+	else
+	{
+	fprintf(stderr, "L%d: usage: push integer\n", line_number);
+	free(info.line);
+	free_stack(*head);
+	exit(EXIT_FAILURE);
 	}
-	if (aux)
-		aux->prev = new_node;
-	new_node->n = n;
-	new_node->next = *head;
-	new_node->prev = NULL;
-	*head = new_node;
-}
+	i = atoi(info.argument);
+	if (info.lifi == 0)
+	add_node(head, i);
+	else
+	add_queue(head, i);
+	}
+
