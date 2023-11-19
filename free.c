@@ -37,6 +37,7 @@ int exec(char *line, stack_t **stack, unsigned int line_number, FILE *file)
 		{"swap", swap_func},
 		{"add", add_func},
 		{"nop", nop_func},
+		{"sub", sub_func},
 		{NULL, NULL}
 	};
 	unsigned int i = 0;

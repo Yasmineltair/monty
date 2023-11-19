@@ -71,4 +71,6 @@ void swap_func(stack_t **head, unsigned int line_number);
 void nop_func(stack_t **head, unsigned int line_number);
 void add_queue(stack_t **h, int n);
 void add_node(stack_t **head, int n);
+void sub_func(stack_t **head, unsigned int line_number);
+
 #endif
