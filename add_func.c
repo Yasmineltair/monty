@@ -9,7 +9,7 @@
 void add_func(stack_t **head, unsigned int line_number)
 {
 	stack_t *temp;
-	int length, aux;
+	int length = 0, aux;
 
 	temp = *head;
 	while (temp)
@@ -20,6 +20,7 @@ void add_func(stack_t **head, unsigned int line_number)
 	if (length < 2)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		free(info.line);
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
