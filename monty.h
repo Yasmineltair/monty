@@ -33,11 +33,31 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+  * struct info_s - strucr containing file, line
+  * argument variables
+  * @file: pointer to monty file
+  * @line: pointer to line content
+  * @argument: argument value
+  */
+
+typedef struct info_s
+{
+	char *line;
+	char *argument;
+} info_t;
+
+extern info_t info;
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <ctype.h>
+#include <sys/types.h>
+#include <fcntl.h>
+#include <ctype.h>
+
 
 void free_stack(stack_t *head);
 int exec(char *line, stack_t **stack,unsigned int line_number, FILE *file);

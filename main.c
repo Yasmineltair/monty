@@ -1,5 +1,7 @@
 #include "monty.h"
 
+info_t info = {NULL, NULL};
+
 /**
   * main - entry point
   * @argc: number of args
@@ -31,6 +33,7 @@ int main(int argc, char *argv[])
 	while (r_line > 0)
 	{
 		r_line = getline(&line, &length, file);
+		info.line = line;
 		line_number++;
 		if (r_line > 0)
 			exec(line, &stack, line_number, file);
@@ -40,4 +43,3 @@ int main(int argc, char *argv[])
 	fclose(file);
 	return (0);
 }
-

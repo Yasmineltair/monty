@@ -14,6 +14,7 @@ stack_t *temp;
 if (*head == NULL)
 {
 fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+free(info.line);
 free_stack(*head);
 exit(EXIT_FAILURE);
 }
