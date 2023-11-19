@@ -32,6 +32,7 @@ int main(int argc, char *argv[])
 	}
 	while (r_line > 0)
 	{
+		line = NULL;
 		r_line = getline(&line, &length, file);
 		info.line = line;
 		line_number++;
