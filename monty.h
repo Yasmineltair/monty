@@ -76,5 +76,6 @@ void div_func(stack_t **head, unsigned int line_number);
 void mul_func(stack_t **head, unsigned int line_number);
 void mod_func(stack_t **head, unsigned int line_number);
 void queue_func(stack_t **head, unsigned int line_number);
+void stack_func(stack_t **head, unsigned int line_number);
 
 #endif

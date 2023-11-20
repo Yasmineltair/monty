@@ -42,6 +42,7 @@ int exec(char *line, stack_t **stack, unsigned int line_number, FILE *file)
 		{"mul", mul_func},
 		{"mod", mod_func},
 		{"queue", queue_func},
+		{"stack", stack_func},
 		{NULL, NULL}
 	};
 	unsigned int i = 0;
@@ -58,15 +59,13 @@ int exec(char *line, stack_t **stack, unsigned int line_number, FILE *file)
 			op_list[i].f(stack, line_number);
 			return (0);
 		}
-		i++;
-	}
+		i++; }
 	if (opcd && op_list[i].opcode == NULL)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcd);
 		fclose(file);
 		free(line);
 		free_stack(*stack);
-		exit(EXIT_FAILURE);
-	}
+		exit(EXIT_FAILURE); }
 	return (1);
 }
