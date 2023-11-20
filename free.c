@@ -41,6 +41,7 @@ int exec(char *line, stack_t **stack, unsigned int line_number, FILE *file)
 		{"div", div_func},
 		{"mul", mul_func},
 		{"mod", mod_func},
+		{"queue", queue_func},
 		{NULL, NULL}
 	};
 	unsigned int i = 0;
